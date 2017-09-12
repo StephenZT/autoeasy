@@ -1,0 +1,2 @@
+# autoeasy
+Automation framework
