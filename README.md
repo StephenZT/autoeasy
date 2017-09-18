@@ -1,2 +1,2 @@
 # autoeasy
-Automation framework
+Simple page object automation example
