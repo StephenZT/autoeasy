@@ -39,9 +39,9 @@ module AutoEasy
         @allow_override_meta = true
         @name = name
         #support platform
-        @support_platforms  = AutoEasy::Core::Supports::PLATFORMS #['desktop','rwd','mobile']
+        @support_platforms  = GSupports.platforms    
         #support meta keys
-        @support_metakeys = AutoEasy::Core::Supports::METAKEYS       #['id', 'css', 'xpath', 'text']
+        @support_metakeys = GSupports.metakeys       
        
         opts.each do |key_platform, value|
           if not @support_platforms.include?(key_platform) then
