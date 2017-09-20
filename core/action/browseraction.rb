@@ -6,15 +6,23 @@ module AutoEasy
   module Core
     class BrowserAction
       #Store webdriver
+      attr_reader :page
       attr_reader :driver
       
       def initialize(driver,opts={})
+        if opts.key?(:page)
+          @page = opts[:page]
+        end
         @driver = driver   
       end
       
       def wait_for_ready(timeout)
         wait = Selenium::WebDriver::Wait.new(:timeout=>timeout.to_i)          
         wait.until { @driver.execute_script("return document.readyState").to_s =="complete" }  
+      end
+      
+      def visit()
+        go_to(page.url)
       end
       
       def go_to(url)
@@ -42,8 +50,11 @@ module AutoEasy
         @driver.manage.delete_all_cookies()   
       end
       
-      def maximize_window()
-        @driver.manage.window.maximize
+      def resize_to()
+        
+      end
+      def maximize_window(width, height)
+        @driver.manage.window.resize_to(width, height)
       end
       
       def open_new_window()
