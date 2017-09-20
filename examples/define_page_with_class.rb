@@ -31,6 +31,7 @@ begin
   google_page = PageFactory.getPage('gd_login_page','desktop',{:force_refresh=>true})
   google_page.action().go_to(google_page.url)
   google_page.action().wait_for_ready(10)
+  google_page.assert().assert_url("contains","https://www.google.com")
   
   google_page.getElement('searchInput').action().fill('abc')
   google_page.getElement('searchButton').action().click()
@@ -39,7 +40,7 @@ begin
   google_page.getElement('searchInput').action().fill('abcdefagasdgag212314325253')
   google_page.getElement('searchButton').action().click()
   google_page.getElement('searchInput').assert().assert_value("==",'abc')
-  
+  LoggerTrace.assert_no_error_in_log()
   sleep(3)
 
   driver.quit
