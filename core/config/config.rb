@@ -32,6 +32,30 @@ module AutoEasy
         @setting[key] = value
       end
       
+      def getEnvironment()
+        return @setting['environment'] 
+      end
+      
+      def getPlatform()
+        return @setting['platform'] 
+      end
+      
+      def getBrowser()
+        return @setting['browser'] 
+      end
+      
+      def getDevice()
+        return @setting['device'] 
+      end
+      
+      def getLogLevel()
+        return @setting['loglevel']
+      end
+      
+      def setConfig(key,value)
+        @setting[key] = value
+      end
+      
       def getConfig()
         return @setting
       end
@@ -39,11 +63,11 @@ module AutoEasy
       def setDefault()
         #Set default settings
         @setting = Hash.new if @setting == nil
-        @setting['environment'] =  AutoEasy::Core::Supports::ENVIRONMENTS[0]
-        @setting['platform'] = AutoEasy::Core::Supports::PLATFORMS[0]
-        @setting['browser'] = AutoEasy::Core::Supports::BROWSERS[0]
-        @setting['device'] = AutoEasy::Core::Supports::DEVICES[0]
-        @setting['loglevel'] = AutoEasy::Core::Supports::LOGLEVELS[0]
+        @setting['environment'] =  GSupports.environments[0]
+        @setting['platform'] = GSupports.platforms[0]
+        @setting['browser'] = GSupports.browsers[0]
+        @setting['device'] = GSupports.devices[0]
+        @setting['loglevel'] = GSupports.loglevels[0]
       end
       
     end
