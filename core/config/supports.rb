@@ -2,19 +2,36 @@
 #Author: Stephen Zhang
 #Self define current supports
 
+require 'singleton'
+
 module AutoEasy
   module Core
-    module Supports
+    class Supports
+      include Singleton
       
-      ENVIRONMENTS = ['QA1','QA2','QA3']
-      PLATFORMS    = ['desktop','rwd','mobile']
-      BROWSERS     = ['Chrome', 'Firefox', 'Marionette', 'IE']
-      DEVICES      = ['Windows','Android','IPhone','Ipad']
-      LOGLEVELS    = ['Error','Warning','Info', 'Debug']
-      #Allow meta keys for defining Elements
-      METAKEYS     = ['id', 'css', 'xpath', 'text','frame']
-      #Operations
-      ASSERTION    = ['equals', '=', '==', 'doesnotequals', '!=', 'gt', '>','gte', '>=','lt', '<','lte', '<=','match', '=~','doesnotmatch', '!=~','contains', 'in', 'doesnotcontain', 'notin']
+      attr_accessor :environments
+      attr_accessor :platforms
+      attr_accessor :browsers
+      attr_accessor :devices
+      attr_accessor :loglevels
+      attr_accessor :metakeys
+      attr_accessor :assertions
+      
+      def setDefault()
+        @environments = ['QA1','QA2','QA3']
+        @platforms    = ['desktop','rwd','mobile']
+        @browsers     = ['Chrome', 'Firefox', 'Marionette', 'IE']
+        @devices      = ['Windows','Android','IPhone','Ipad']
+        @loglevels    = ['Error','Warning','Info', 'Debug']
+        #Allow meta keys for defining Elements
+        @metakeys     = ['id', 'css', 'xpath', 'text','frame']
+        #Operations
+        @assertions    = ['equals', '=', '==', 'doesnotequals', '!=', 'gt', '>','gte', '>=','lt', '<','lte', '<=','match', '=~','doesnotmatch', '!=~','contains', 'in', 'doesnotcontain', 'notin']
+      end
     end
   end
 end
+
+GSupports ||= AutoEasy::Core::Supports.instance
+GSupports.setDefault()
+
