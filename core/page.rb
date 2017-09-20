@@ -86,8 +86,13 @@ module AutoEasy
         end      
       end
      
-      def action()
-        return AutoEasy::Core::BrowserAction.new(DriverFactory.currentDriver())
+      def action(opts={})
+        opts[:page] = self
+        return AutoEasy::Core::BrowserAction.new(DriverFactory.currentDriver(), opts)
+      end
+      
+      def assert(opts={})
+        return AutoEasy::Core::BrowserAssert.new(action(),opts)
       end
        
     end
