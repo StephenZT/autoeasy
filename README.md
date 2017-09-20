@@ -1,3 +1,3 @@
 # autoeasy
-Examples
+Examples for using selenium-webdriver
 
