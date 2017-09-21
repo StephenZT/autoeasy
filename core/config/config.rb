@@ -1,3 +1,5 @@
+# encoding=utf-8
+#Author: Stephen Zhang
 require File.expand_path(File.dirname(__FILE__)) + "/Supports.rb"
 require 'singleton'
 
