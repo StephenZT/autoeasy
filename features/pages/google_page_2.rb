@@ -23,4 +23,4 @@ class LoginPage < AutoEasy::Core::Page
 end
 
 
-PageRegister.registerPage('gd_login_page',LoginPage.to_s,{:url=>"https://www.google.com"})
+G_PageRegister.registerPage('gd_login_page',LoginPage.to_s,{:url=>"https://www.google.com"})

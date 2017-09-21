@@ -86,6 +86,6 @@ module AutoEasy
   end
 end
 
-DriverRegister ||= AutoEasy::Core::DriverRegister
-DriverRegister.defaultRegister()
+G_DriverRegister ||= AutoEasy::Core::DriverRegister
+G_DriverRegister.defaultRegister()
 

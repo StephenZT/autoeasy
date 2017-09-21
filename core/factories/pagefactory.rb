@@ -25,4 +25,4 @@ module AutoEasy
   end
 end
 
-PageFactory ||= AutoEasy::Factories::PageFactory.instance
+G_PageFactory ||= AutoEasy::Factories::PageFactory.instance

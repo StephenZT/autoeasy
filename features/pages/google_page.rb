@@ -15,4 +15,4 @@ page_data = {'searchInput'=> {
                           }
             }
             
-PageRegister.registerPage('google_first_page', page_data, {:url=>"https://www.google.com"})
+G_PageRegister.registerPage('google_first_page', page_data, {:url=>"https://www.google.com"})

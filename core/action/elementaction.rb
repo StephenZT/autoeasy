@@ -51,7 +51,7 @@ module AutoEasy
       end
       
       def switchFrame(name)
-        frames = PageFactory.current_page.getFrameChain(name)
+        frames = G_PageFactory.current_page.getFrameChain(name)
         frames.each do |frame|
           @driver.switch_to.frame(frame)
         end

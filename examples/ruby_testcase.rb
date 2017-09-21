@@ -23,13 +23,16 @@ class GooglePageTest < Test::Unit::TestCase
                           }
             }
             
-            PageRegister.registerPage('google_first_page', page_data, {:url=>"http://www.google.com"})
+            G_PageRegister.registerPage('google_first_page', page_data, {:url=>"http://www.google.com"})
             #webdriver
-            driver = DriverFactory.currentDriver()
+            G_ConfigHelper.conifg_enironment(["QA3","QA4"])
+            G_ConfigHelper.config_current_stage("QA3","desktop","chrome","Windows","Error")
+            G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'GDCQA4SQL',:database=>'NEC'})
+            G_DriverFactory.getDriver(G_ConfigHelper.get_browser())
     end
 
     def test_googlepage
-      google_page = PageFactory.getPage('google_first_page','desktop')
+      google_page = G_PageFactory.getPage('google_first_page','desktop')
       google_page.action().go_to(google_page.url)
       google_page.action().wait_for_ready(10)
       
@@ -47,6 +50,6 @@ class GooglePageTest < Test::Unit::TestCase
     end
 
     def teardown
-        DriverFactory.currentDriver().quit()
+        G_DriverFactory.currentDriver().quit()
     end
 end

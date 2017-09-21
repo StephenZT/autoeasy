@@ -39,9 +39,9 @@ module AutoEasy
         @allow_override_meta = true
         @name = name
         #support platform
-        @support_platforms  = GSupports.platforms    
+        @support_platforms  = G_Supports.platforms    
         #support meta keys
-        @support_metakeys = GSupports.metakeys       
+        @support_metakeys = G_Supports.metakeys       
        
         opts.each do |key_platform, value|
           if not @support_platforms.include?(key_platform) then
@@ -135,7 +135,7 @@ module AutoEasy
       end
       
       def action()
-        return AutoEasy::Core::ElementAction.new(self,DriverFactory.currentDriver())
+        return AutoEasy::Core::ElementAction.new(self,G_DriverFactory.currentDriver())
       end
       
       def assert()

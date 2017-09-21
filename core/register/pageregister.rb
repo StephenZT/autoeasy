@@ -54,4 +54,4 @@ module AutoEasy
   end
 end
 
-PageRegister = AutoEasy::Core::PageRegister
+G_PageRegister = AutoEasy::Core::PageRegister

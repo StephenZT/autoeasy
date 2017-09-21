@@ -32,6 +32,6 @@ module AutoEasy
   end
 end
 
-GSupports ||= AutoEasy::Core::Supports.instance
-GSupports.setDefault()
+G_Supports ||= AutoEasy::Core::Supports.instance
+G_Supports.setDefault()
 

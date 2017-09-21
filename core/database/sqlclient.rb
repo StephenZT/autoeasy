@@ -1,7 +1,7 @@
 # encoding=utf-8
 #Author: Stephen Zhang
 #Example
-# database = {:dataserver=>'GDCQA4SQL',:database=>'NEC'}
+# database = {:dataserver=>'tt',:database=>'tt'}
 # begin
   # sqlclient = AutoEasy::Core::SqlClient.new(database)
   # result = sqlclient.executeQuery("select top 1 * from customer")
@@ -103,7 +103,7 @@ module AutoEasy
       end
       
       def connection_timeout
-        sqlserver_azure? ? 20 : 5
+        sqlserver_azure? ? 20 : 180
       end
       
       def execute_transaction()

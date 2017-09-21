@@ -65,17 +65,17 @@ module AutoEasy
       def setDefault()
         #Set default settings
         @setting = Hash.new if @setting == nil
-        @setting['environment'] =  GSupports.environments[0]
-        @setting['platform'] = GSupports.platforms[0]
-        @setting['browser'] = GSupports.browsers[0]
-        @setting['device'] = GSupports.devices[0]
-        @setting['loglevel'] = GSupports.loglevels[0]
+        @setting['environment'] =  G_Supports.environments[0]
+        @setting['platform'] = G_Supports.platforms[0]
+        @setting['browser'] = G_Supports.browsers[0]
+        @setting['device'] = G_Supports.devices[0]
+        @setting['loglevel'] = G_Supports.loglevels[0]
       end
       
     end
   end
 end
 
-Configuration ||= AutoEasy::Core::Config.instance
-Configuration.setDefault()
+G_Configuration ||= AutoEasy::Core::Config.instance
+G_Configuration.setDefault()
 

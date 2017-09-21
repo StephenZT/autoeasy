@@ -3,7 +3,7 @@
 
 module AutoEasy
   module Core
-    module Variables
+    module VariableRegister
     	@Variables = Hash.new
     
     	def self.getVariable(key, location="")
@@ -140,3 +140,4 @@ module AutoEasy
   end
 end
 
+G_Variables ||= AutoEasy::Core::VariableRegister

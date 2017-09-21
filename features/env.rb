@@ -1,12 +1,13 @@
 require File.expand_path(File.dirname(__FILE__)) + "/../Packages.rb"
 
+G_ConfigHelper.conifg_enironment(["QA3","QA4"])
+G_ConfigHelper.config_current_stage("QA3","desktop","chrome","Windows","Error")
+G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'GDCQA4SQL',:database=>'NEC'})
 
-Configuration.setConfig("browser","chrome")
-DriverFactory.getDriver(Configuration.getConfig()["browser"])
-
+G_DriverFactory.getDriver(G_ConfigHelper.get_browser())
 
 Before do |scenario|
-  platform = Configuration.getConfig()["platform"]
+  platform = G_ConfigHelper.get_platform()
   puts "Start scenario " + scenario.name + " on platform: " + platform
 end
 

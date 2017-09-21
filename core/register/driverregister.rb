@@ -15,7 +15,7 @@ module AutoEasy
         if @current_capybara_driver != nil
           @current_capybara_driver.quit()
         end
-        @current_capybara_driver = DriverRegister.instance(browser)
+        @current_capybara_driver = G_DriverRegister.instance(browser)
         @current_driver = @current_capybara_driver.browser
         return @current_driver
       end
@@ -37,4 +37,4 @@ module AutoEasy
   end
 end
 
-DriverFactory ||= AutoEasy::Factories::DriverFactory.instance
+G_DriverFactory ||= AutoEasy::Factories::DriverFactory.instance

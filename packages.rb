@@ -1,7 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Config/Supports.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Config/Config.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Config/ConfigHelper.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Assert.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Element.rb"
@@ -15,6 +14,10 @@ require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/ElementAction.r
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/ElementAssert.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/PageFactory.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/DriverFactory.rb"
+
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Database/SqlClient.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/QueryRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/VariableRegister.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/CodeUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/ColorUtil.rb"
