@@ -64,10 +64,12 @@ module LoggerTrace
   end
   
   def self.assert_no_error_in_log()
-    if @Logs.key?(LogLevel::Error) 
+    if @Logs.key?(LogLevel::Error)
+      puts "Errors exist in log pool =========== Start" 
       @Logs[LogLevel::Error].each do |errorInfo|
         puts errorInfo
       end
+      puts "Errors exist in log pool =========== End"
     end
     AutoEasy::Core::Assert.new().assert("Assert no soft failure error in log pool.", @Logs.key?(LogLevel::Error), false, "==")
   end

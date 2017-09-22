@@ -18,13 +18,11 @@ page_data = {'searchInput'=> {
 G_PageRegister.registerPage('google_first_page', page_data, {:url=>"http://www.google.com"})
 #webdriver
 G_ConfigHelper.conifg_enironment(["QA3","QA4"])
-G_ConfigHelper.config_current_stage("QA3","desktop","chrome","Windows","Error")
+G_ConfigHelper.config_current_stage("QA4","desktop","chrome","Windows","Error")
 G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'GDCQA4SQL',:database=>'NEC'})
 G_DriverFactory.getDriver(G_ConfigHelper.get_browser())
 
 begin
-  puts driver.browser
-
   #creat new page 
   google_page = G_PageFactory.getPage('google_first_page','desktop')
   google_page.action().go_to(google_page.url)
@@ -33,14 +31,14 @@ begin
   google_page.action().open_new_window()
   google_page.action().close_window()
   
-  google_page.assert().assert_url("==","http://www.google.com")
+  google_page.assert({:soft_assert=>true}).assert_url("==","https://www.google.com")
   google_page.getElement('invalidEl').assert().assert_invalid()
   google_page.getElement('searchInput').action().fill('abc')
   google_page.getElement('searchButton').action().click()
   google_page.getElement('searchInput').assert().assert_value("==",'abc')
   google_page.getElement('searchInput').action().fill('abcdefagasdgag212314325253')
   google_page.getElement('searchButton').action().click()
-  google_page.getElement('searchInput').assert().assert_value("==",'abc')
+  google_page.getElement('searchInput').assert().assert_value("contains",'abc')
   LoggerTrace.assert_no_error_in_log()
   sleep(3)
 
