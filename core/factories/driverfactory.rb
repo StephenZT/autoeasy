@@ -7,10 +7,16 @@ require 'fileutils'
 
 module AutoEasy
   module Core
-    module DriverRegister
-      @registered_drivers = Hash.new
+    class DriverRegister
+      include Singleton
       
-      def self.registerDriver(name,opts={})
+      attr_accessor :registered_drivers      
+      
+      def initialize(opts={})
+        @registered_drivers = Hash.new
+      end
+      
+      def registerDriver(name,opts={})
         if not @registered_drivers.key?(name) then
           @registered_drivers[name] = opts
         else
@@ -18,12 +24,12 @@ module AutoEasy
         end
       end
       
-      def self.isRegistered(name)
+      def isRegistered(name)
         return @registered_drivers.key?(name) 
       end
       
       
-      def self.instance(name)
+      def instance(name)
         if not @registered_drivers.key?(name) then
           raise "Driver name: #{name} not registered."
         else
@@ -31,7 +37,7 @@ module AutoEasy
         end
       end
       
-      def self.defaultRegister()
+      def defaultRegister()
         ##Register chrome
         @client = Selenium::WebDriver::Remote::Http::Default.new
         @client.read_timeout = 120
@@ -86,6 +92,6 @@ module AutoEasy
   end
 end
 
-G_DriverRegister ||= AutoEasy::Core::DriverRegister
+G_DriverRegister ||= AutoEasy::Core::DriverRegister.instance
 G_DriverRegister.defaultRegister()
 

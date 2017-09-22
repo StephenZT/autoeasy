@@ -27,7 +27,7 @@ module AutoEasy
       
       def self.getQuery(name, args={})
         raise "Query name #{name} does not registered." if !@registered_queries.key?(name)
-        return realQuery(@registered_queries[name],args) 
+        return transferQuery(@registered_queries[name],args) 
       end
       
       def self.transferQuery(query, args={})

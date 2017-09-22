@@ -16,6 +16,8 @@ require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/PageFactory.
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/DriverFactory.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Database/SqlClient.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Database/DBHelper.rb"
+
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/QueryRegister.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/VariableRegister.rb"
 

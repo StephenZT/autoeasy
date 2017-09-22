@@ -19,7 +19,6 @@ G_PageRegister.registerPage('google_first_page', page_data, {:url=>"http://www.g
 #webdriver
 G_ConfigHelper.conifg_enironment(["QA3","QA4"])
 G_ConfigHelper.config_current_stage("QA4","desktop","chrome","Windows","Error")
-G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'GDCQA4SQL',:database=>'NEC'})
 G_DriverFactory.getDriver(G_ConfigHelper.get_browser())
 
 begin
