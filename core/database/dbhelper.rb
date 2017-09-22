@@ -9,9 +9,12 @@ module AutoEasy
       include Singleton
         
       attr_accessor :db_results
+      attr_accessor :db_allow_max_results_count
       
       def initialize(opts={})
         @db_results = Hash.new
+
+        
       end
       
       def get_result(name)

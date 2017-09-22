@@ -1,8 +1,8 @@
 # encoding=utf-8
 require File.expand_path(File.dirname(__FILE__)) + "/../Packages.rb"
 
-G_ConfigHelper.conifg_enironment(["QA3","QA4"])
-G_ConfigHelper.config_databases("QA4","default",{:dataserver=>'svname',:database=>'dbname'})
+G_ConfigHelper.conifg_enironment(["QA4"])
+G_ConfigHelper.config_databases("QA4","default",{:dataserver=>'sv',:database=>'db'})
 G_ConfigHelper.config_current_stage("QA4","desktop","chrome","Windows","Error")
 
 customerQuery = "SELECT A.*

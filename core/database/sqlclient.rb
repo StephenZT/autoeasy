@@ -21,6 +21,7 @@ module AutoEasy
       TINYTDS_SCHEMAS = ['sqlserver_2000', 'sqlserver_2005', 'sqlserver_2008', 'sqlserver_2014', 'sqlserver_azure', 'sybase_ase'].freeze
       
       attr_reader :client
+      attr_reader :db_allow_max_results_count
       
       @schema = 'sqlserver_2000'
       
@@ -32,6 +33,12 @@ module AutoEasy
         if !opts.key?(:database) then
           raise "Please identify database name with key :database"
         end
+        
+        if opts.key?(:db_allow_max_results_count) then
+          @db_allow_max_results_count = opts[:db_allow_max_results_count]
+        else
+          @db_allow_max_results_count = 100
+        end
 
         @client = new_connection(opts)
       end
@@ -39,8 +46,13 @@ module AutoEasy
       def executeQuery(query)
         arr = []
         result = client.execute(query)
+        count = 0
         result.each do |item|
           arr.push(item)
+          count = count + 1
+          if count >= @db_allow_max_results_count
+            break
+          end
         end
         return arr
       end
