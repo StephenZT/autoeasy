@@ -3,6 +3,9 @@ require File.expand_path(File.dirname(__FILE__)) + "/Logger.rb"
 
 module AutoEasy
   module Core
+    class AssertError < StandardError; end
+    class AssertArgumentError < StandardError; end
+    
     class Assert
     	@debug = false
     	#If true will store error into LoggerTrace.LogTrack instead of raise error, so that we can continue test 
@@ -31,7 +34,7 @@ module AutoEasy
     		elsif args.length == 2
     			assertBoolean(args[0], args[1])
     		else
-    			raise "Can't assert on argument length " + args.length.to_s
+    			raise AssertArgumentError.new("Can't assert on argument length " + args.length.to_s)
     		end
     
     	end
@@ -50,7 +53,7 @@ module AutoEasy
     		elsif args.length == 2
     			warnBoolean(args[0], args[1])
     		else
-    			raise "Can't warn on argument length " + args.length.to_s
+    			raise AssertArgumentError.new("Can't warn on argument length " + args.length.to_s)
     		end
     	end
     
@@ -73,7 +76,7 @@ module AutoEasy
     		  if(@soft_assert)
     		    puts "Soft Failed:: " + description + expected
     		  else
-    		    raise "Failed:: " + description + expected 
+    		    raise AssertError.new("Failed:: " + description + expected) 
     		  end
     		else
     		  STDOUT.puts "Passed:: " + description

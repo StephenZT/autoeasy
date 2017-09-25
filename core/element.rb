@@ -134,12 +134,12 @@ module AutoEasy
         end
       end
       
-      def action()
-        return AutoEasy::Core::ElementAction.new(self,G_DriverFactory.currentDriver())
+      def action(opts={})
+        return AutoEasy::Core::ElementAction.new(self,G_DriverFactory.currentDriver(),opts)
       end
       
-      def assert()
-        return AutoEasy::Core::ElementAssert.new(action())
+      def assert(opts={})
+        return AutoEasy::Core::ElementAssert.new(action(opts),opts)
       end
       
     end

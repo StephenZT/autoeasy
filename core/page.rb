@@ -92,7 +92,7 @@ module AutoEasy
       end
       
       def assert(opts={})
-        return AutoEasy::Core::BrowserAssert.new(action(),opts)
+        return AutoEasy::Core::BrowserAssert.new(action(opts),opts)
       end
        
     end

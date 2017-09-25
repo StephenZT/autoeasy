@@ -1,20 +1,23 @@
+# encoding=utf-8
+#Author: Stephen Zhang
+
 module AutoEasy
   module Core
     class BrowserAssert
-      attr_reader :page_action
-      attr_reader :page_assert
+      attr_reader :action
+      attr_reader :assert
       
       def initialize(browser_act, opts={})
-        @page_action = browser_act
-        @page_assert = AutoEasy::Core::Assert.new(opts)
+        @action = browser_act
+        @assert = AutoEasy::Core::Assert.new(opts)
       end
       
       def assert_url(assertion, value)
-        @page_assert.assert("Assert page url.", @page_action.get_url, value, assertion)
+        @assert.assert("Assert page url.", @action.get_url, value, assertion)
       end
       
       def assert_alert_text(assertion, value)
-        @page_assert.assert("Assert alert text.", @page_action.alert_text(), value, assertion)
+        @assert.assert("Assert alert text.", @action.alert_text(), value, assertion)
       end
       
     end

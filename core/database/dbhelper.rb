@@ -13,16 +13,14 @@ module AutoEasy
       
       def initialize(opts={})
         @db_results = Hash.new
-
-        
       end
       
       def get_result(name)
-        raise "There is no result : #{name}" if !@db_results.key?(name)
+        return nil if !@db_results.key?(name)
         return @db_results[name]
       end
       
-      def query_default_db(resultname,queryname,queryargs)
+      def query_default_db(resultname,queryname,queryargs={})
         return query(resultname,queryname,queryargs,G_ConfigHelper.get_default_database()) 
       end
       
@@ -38,6 +36,14 @@ module AutoEasy
         ensure
           sqlclient.close_client
         end
+      end
+      
+      def action(resultname,opts={})
+        return AutoEasy::Core::DBResultAction.new(get_result(resultname),opts)
+      end
+      
+      def assert(resultname,opts={})
+        return AutoEasy::Core::DBResultAssert.new(action(resultname,opts),opts)
       end
              
     end

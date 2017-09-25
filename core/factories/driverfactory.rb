@@ -3,6 +3,7 @@
 require 'securerandom'
 require 'selenium-webdriver'
 require 'capybara'
+require 'capybara/dsl'
 require 'fileutils'
 
 module AutoEasy
