@@ -1,15 +1,20 @@
 # encoding=utf-8
 require File.expand_path(File.dirname(__FILE__)) + "/../Packages.rb"
 
-G_ConfigHelper.conifg_enironment(["QA4"])
+G_ConfigHelper.conifg_enironment(["QA2","QA3","QA4"])
+G_ConfigHelper.config_databases("QA2","default",{:dataserver=>'servername',:database=>'dbname',:username=>'Abc',:password=>'xyz'})
+G_ConfigHelper.config_databases("QA3","default",{:dataserver=>'servername',:database=>'dbname'})
+G_ConfigHelper.config_databases("QA3","automation",{:dataserver=>'servername',:database=>'dbname'})
 G_ConfigHelper.config_databases("QA4","default",{:dataserver=>'servername',:database=>'dbname'})
+
 G_ConfigHelper.config_current_stage("QA4","desktop","chrome","Windows","Error")
 
 customerQuery = "SELECT top 10 A.* FROM Customer A WITH (NOLOCK) order BY A.CreateDate desc"
 
 G_QueryRegister.registerQuery('q_customer',customerQuery)
-G_DBHelper.query_default_db('my_cus','q_customer')
 
+#G_DBHelper.query('my_cus','q_customer',{},G_ConfigHelper.get_database("QA3","automation"))
+G_DBHelper.query_default_db('my_cus','q_customer')  # <==> G_DBHelper.query('my_cus','q_customer',{},G_ConfigHelper.get_database("QA4","default"))
 #result2 = G_DBHelper.action('my_cus').get_first_row
 #puts result2
 

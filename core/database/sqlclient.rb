@@ -21,9 +21,8 @@ module AutoEasy
       TINYTDS_SCHEMAS = ['sqlserver_2000', 'sqlserver_2005', 'sqlserver_2008', 'sqlserver_2014', 'sqlserver_azure', 'sybase_ase'].freeze
       
       attr_reader :client
+      attr_reader :schema
       attr_reader :db_allow_max_results_count
-      
-      @schema = 'sqlserver_2000'
       
       #opts {:dataserver=>'abc',:database=>'bcd'}
       def initialize(opts={})
@@ -32,6 +31,11 @@ module AutoEasy
         end
         if !opts.key?(:database) then
           raise "Please identify database name with key :database"
+        end
+        if opts.key?(:schema) then
+          @schema = opts[:schema]
+        else
+          @schema = 'sqlserver_2000'
         end
         
         if opts.key?(:db_allow_max_results_count) then
