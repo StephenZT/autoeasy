@@ -15,6 +15,8 @@ G_QueryRegister.registerQuery('q_customer',customerQuery)
 
 #G_DBHelper.query('my_cus','q_customer',{},G_ConfigHelper.get_database("QA3","automation"))
 G_DBHelper.query_default_db('my_cus','q_customer')  # <==> G_DBHelper.query('my_cus','q_customer',{},G_ConfigHelper.get_database("QA4","default"))
+#G_DBHelper.query('my_cus','q_customer',{},G_ConfigHelper.get_database("QA3","automation"))
+
 #result2 = G_DBHelper.action('my_cus').get_first_row
 #puts result2
 

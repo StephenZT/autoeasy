@@ -34,7 +34,9 @@ module AutoEasy
         rescue Exception =>msg
           puts msg
         ensure
-          sqlclient.close_client
+          if sqlclient != nil then
+            sqlclient.close_client
+          end
         end
       end
       
