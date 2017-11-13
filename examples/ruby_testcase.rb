@@ -27,7 +27,7 @@ class GooglePageTest < Test::Unit::TestCase
             #webdriver
             G_ConfigHelper.conifg_enironment(["QA3","QA4"])
             G_ConfigHelper.config_current_stage("QA3","desktop","chrome","Windows","Error")
-            G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'GDCQA4SQL',:database=>'NEC'})
+            G_ConfigHelper.config_databases("QA4","default",{:dataserver=>'aaa',:database=>'bbb'})
             G_DriverFactory.getDriver(G_ConfigHelper.get_browser())
     end
 
