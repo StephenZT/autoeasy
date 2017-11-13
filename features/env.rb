@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__)) + "/../Packages.rb"
 
 G_ConfigHelper.conifg_enironment(["QA3","QA4"])
-G_ConfigHelper.config_databases("QA3","defualt",{:dataserver=>'servername',:database=>'dbname'})
-G_ConfigHelper.config_databases("QA4","defualt",{:dataserver=>'servername',:database=>'dbname'})
+G_ConfigHelper.config_databases("QA3","default",{:dataserver=>'servername',:database=>'dbname'})
+G_ConfigHelper.config_databases("QA4","default",{:dataserver=>'servername',:database=>'dbname'})
 
 G_ConfigHelper.config_current_stage("QA3","desktop","chrome","Windows","Error")
 
