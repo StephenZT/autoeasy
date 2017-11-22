@@ -9,12 +9,12 @@ require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/PageRegister.
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/DriverRegister.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/BrowserAction.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/BrowserAssert.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/ElementAction.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/ElementAssert.rb"
-
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/DBResultAction.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Action/DBResultAssert.rb"
+
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Assert/BrowserAssert.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Assert/ElementAssert.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Assert/DBResultAssert.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/PageFactory.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Factories/DriverFactory.rb"
