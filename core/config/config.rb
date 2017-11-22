@@ -1,5 +1,7 @@
 # encoding=utf-8
 #Author: Stephen Zhang
+# Current execution context, test case will be executed under this configuration
+
 require File.expand_path(File.dirname(__FILE__)) + "/Supports.rb"
 require 'singleton'
 

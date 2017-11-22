@@ -1,6 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
-
+#Register variables, it will be used anywhere, it's for storing variable cross cucumber statements 
 module AutoEasy
   module Core
     module VariableRegister

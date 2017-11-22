@@ -1,6 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
-#Self define current supports
+#Self define current supports, what kinds of env/platform/browser/device/loglevel is available
 
 require 'singleton'
 

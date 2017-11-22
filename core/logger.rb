@@ -1,4 +1,5 @@
 # encoding=utf-8
+# Log level and store/puts log information 
 module LoggerTrace
   module LogLevel          
     Error = 1

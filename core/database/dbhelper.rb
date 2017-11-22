@@ -1,5 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
+# Execute query on specified database and save results
 
 require 'singleton'
 

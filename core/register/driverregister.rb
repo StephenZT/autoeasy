@@ -21,7 +21,8 @@ module AutoEasy
         if not @registered_drivers.key?(name) then
           @registered_drivers[name] = opts
         else
-          raise "Driver name: #{name} already registered."
+          @registered_drivers[name] = opts
+          puts "Driver name: #{name} already registered and will be overrided."
         end
       end
       

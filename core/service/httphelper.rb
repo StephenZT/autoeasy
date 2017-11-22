@@ -1,8 +1,10 @@
+# encoding=utf-8
+#Author: Stephen Zhang
+#Http request (post,get), it will be used in rest/soap service
+
 require 'net/http'
 require 'ntlm/http'
 require 'json'
-# encoding=utf-8
-#Author: Stephen Zhang
 
 module AutoEasy
   module Core

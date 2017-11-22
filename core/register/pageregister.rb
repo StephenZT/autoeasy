@@ -1,6 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
-
+#Register page definitions, page will be generated per your register page definition
 
 module AutoEasy
   module Core

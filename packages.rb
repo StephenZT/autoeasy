@@ -29,3 +29,6 @@ require File.expand_path(File.dirname(__FILE__)) + "/Utils/CodeUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/ColorUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/DateUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/RandomUtil.rb"
+
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/AuthRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ProviderRegister.rb"

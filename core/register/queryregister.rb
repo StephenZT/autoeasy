@@ -1,5 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
+#Register query script that can be used in whole project
 #Examples
 # customerQuery = "SELECT A.*
     # FROM Customer A WITH (NOLOCK)

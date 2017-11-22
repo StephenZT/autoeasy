@@ -1,3 +1,6 @@
+# encoding=utf-8
+#Author: Stephen Zhang
+#Assert : verify it's as your expectation
 require 'time'
 require File.expand_path(File.dirname(__FILE__)) + "/Logger.rb"
 

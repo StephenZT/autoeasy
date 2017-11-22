@@ -1,5 +1,6 @@
 # encoding=utf-8
 #Author: Stephen Zhang
+# add database configurations those used in test case
 # DBConfig.addConfig("qa3","default", {:database => "dbname",:dataserver => "servername"})
 # puts DBConfig.getConfig("qa3","default")
 

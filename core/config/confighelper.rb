@@ -1,5 +1,7 @@
 # encoding=utf-8
 #Author: Stephen Zhang
+#Collect all configuration together so that it can set/get configuration easily
+
 require File.expand_path(File.dirname(__FILE__)) + "/Supports.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Config.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/DBConfig.rb"
@@ -9,16 +11,16 @@ module AutoEasy
   module Core
     module ConfigHelper
       #support conifg
-      def self.conifg_enironment(value)
+      def self.conifg_enironment(value=[])
         G_Supports.environments = value
       end
-      def self.conifg_platforms(value)
+      def self.conifg_platforms(value=[])
         G_Supports.platforms = value
       end
-      def self.conifg_browsers(value)
+      def self.conifg_browsers(value=[])
         G_Supports.browsers = value
       end
-      def self.conifg_devices(value)
+      def self.conifg_devices(value=[])
         G_Supports.devices = value
       end
       #Current config
@@ -61,6 +63,14 @@ module AutoEasy
       
       def self.get_default_database()
         get_database(get_env,"default")
+      end
+      
+      def self.config_auth(name, authentication)
+        G_AuthRegister.addAuth(name, authentication)
+      end
+      
+      def self.get_auth(name)
+        return G_AuthRegister.getAuth(name)
       end
       
     end
