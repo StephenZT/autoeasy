@@ -25,6 +25,10 @@ require File.expand_path(File.dirname(__FILE__)) + "/Core/Database/DBHelper.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/QueryRegister.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/VariableRegister.rb"
 
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Service/HttpHelper.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Service/RestService.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Service/SoapService.rb"
+
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/CodeUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/ColorUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/DateUtil.rb"
@@ -32,3 +36,4 @@ require File.expand_path(File.dirname(__FILE__)) + "/Utils/RandomUtil.rb"
 
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/AuthRegister.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ProviderRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ServiceRegister.rb"

@@ -63,11 +63,6 @@ module DateUtil
         return DateTime.parse(date.to_s).strftime("%Y-%m-%d 00:00:00 -0800")
      end
   end
-
-
-
-
-
 end
 
 

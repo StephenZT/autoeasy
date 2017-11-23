@@ -9,7 +9,7 @@ require 'json'
 module AutoEasy
   module Core
     class HttpHelper
-      def getQuery(uri, contentType = "application/json")
+      def self.getQuery(uri, contentType = "application/json")
         if (uri.to_s[-1] == "=")
           uri.to_s[-1] = "%3D"
         end
@@ -25,7 +25,7 @@ module AutoEasy
         return response.body
       end
       
-      def postData(uri, object, contentType = "application/json")
+      def self.postData(uri, object, contentType = "application/json")
         postUri = URI.parse(uri)
         http = Net::HTTP.new(postUri.host, postUri.port)
         if(uri.include? "https")
@@ -38,7 +38,7 @@ module AutoEasy
         return response.body
       end
       
-      def postQuery(uri, parameters, contentType = "application/json")
+      def self.postQuery(uri, parameters, contentType = "application/json")
         getUri = URI.parse(uri)
         http = Net::HTTP.new(getUri.host, getUri.port)
         if(uri.include? "https")
@@ -51,7 +51,7 @@ module AutoEasy
         return response.body
       end
       
-      def postRequest(uri, parameters, object, ntlmAuth=nil, contentType="application/json", acceptEncoding="gzip,deflate", accept="application/json")
+      def self.postRequest(uri, parameters, object, ntlmAuth=nil, contentType="application/json", acceptEncoding="gzip,deflate", accept="application/json")
         postUri = URI.parse(uri)
         http = Net::HTTP.new(postUri.host, postUri.port)
         if(uri.include? "https")
@@ -76,7 +76,6 @@ module AutoEasy
           response = http.request(request)
         end
         return response.body
-        end
       end
     end
   end
