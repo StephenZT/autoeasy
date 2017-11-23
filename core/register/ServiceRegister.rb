@@ -5,15 +5,19 @@
 
 module AutoEasy
   module Core
-    module ServiceRegister
-      @registered_services = Hash.new
+    class ServiceRegister
+      include Singleton
       
-      def self.registerService(name, request)
+      def initialize()
+        @registered_services = Hash.new  
+      end
+      
+      def registerService(name, request)
         raise "Service name #{name} already exist, please register it with another name." if @registered_services.key?(name)
         @registered_services[name] = request
       end
       
-      def self.getService(name)
+      def getService(name)
         raise "Service name #{name} does not registered." if !@registered_services.key?(name)
         return @registered_services[name] 
       end
@@ -21,5 +25,5 @@ module AutoEasy
   end
 end
 
-G_ServiceRegister ||= AutoEasy::Core::ServiceRegister
+G_ServiceRegister ||= AutoEasy::Core::ServiceRegister.instance
     

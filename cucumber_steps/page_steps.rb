@@ -1216,40 +1216,7 @@ When(/^I execute below steps if page "([^"]*)" (was|wasnot) skipped$/) do |pagen
   end
 end
 
-#Start_DOC
-#Author:: Stephen Zhang
-#Desc:: steps execution condition reset, from this step ignore condition by 'I execute below steps if page "([^"]*)" (was|wasnot) skipped'
-#params::
-#varname: variable name
-#action: is / is not
-#Returns::
-#Example:: set below steps valid if valraible 'skipped'==true, it means any step will be executed from this step
-# I execute below steps if variable "skipped" is true
-#End_DOC
-When(/^I execute below steps if variable "([^"]*)" (is|isnot) true$/) do |varname, action|
-  if !Variables.hasVariable(varname) then
-    puts "Varialbe '" + varname + "' is not exist, this step do nothing"
-    Variables.setVariable('steps_in_section_is_valid_flag', true)
-  else
-    if Variables.getVariable(varname) then
-      Variables.setVariable('steps_in_section_is_valid_flag', action == 'is' ? true : false)
-    else
-      Variables.setVariable('steps_in_section_is_valid_flag', action == 'is' ? false : true)
-    end
-  end
-end
 
-#Start_DOC
-#Author:: Stephen Zhang
-#Desc:: steps execution condition reset, from this step ignore condition by 'I execute below steps if page "([^"]*)" (was|wasnot) skipped'
-#params::
-#Returns::
-#Example:: set any step valid, it means any step will be executed from this step
-# I stop checking step available
-#End_DOC
-When(/^I reset step execution condition$/) do
-  Variables.setVariable('steps_in_section_is_valid_flag', true)
-end
 
 #Start_DOC
 #Author::

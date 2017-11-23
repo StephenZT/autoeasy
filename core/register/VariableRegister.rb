@@ -3,10 +3,14 @@
 #Register variables, it will be used anywhere, it's for storing variable cross cucumber statements 
 module AutoEasy
   module Core
-    module VariableRegister
-    	@Variables = Hash.new
-    
-    	def self.getVariable(key, location="")
+    class VariableRegister
+      include Singleton
+    	
+      def initialize()
+        @Variables = Hash.new
+      end
+      
+    	def getVariable(key, location="")
     		variable = @Variables[key]
     		
     		if(variable == nil) then
@@ -41,7 +45,7 @@ module AutoEasy
     		return variable
     	end
     
-    	def self.operateVariable(key, operate, opts={})
+    	def operateVariable(key, operate, opts={})
     		variable = getVariable(key, opts[:location] == nil ? "" : opts[:location])
     		case(operate)
     		  when "tostring"
@@ -65,7 +69,7 @@ module AutoEasy
     		setVariable(key, variable, opts[:location] == nil ? "" : opts[:location])
     	end
     
-    	def self.castVariable(value, modifier, operation)
+    	def castVariable(value, modifier, operation)
     		if((value.to_s.scan(".") || modifier.to_s.scan(".")) && (value.to_f != 0.0 || value == "0" || value == 0.0 || value == 0 || value == "0.0") && (modifier.to_f != 0.0 || modifier == 0.0 || modifier == 0 || modifier == "0" || value == "0.0"))
     			value = value.to_f
     			modifier = modifier.to_f
@@ -89,7 +93,7 @@ module AutoEasy
     		return value
     	end
     
-    	def self.setVariable(key, value, location = "")
+    	def setVariable(key, value, location = "")
     		if(location != "") then
     			currentLocation = ''
     			if(@Variables[key] == nil || !@Variables[key].is_a?(Hash)) then
@@ -132,7 +136,7 @@ module AutoEasy
     		end
     	end
     
-      def self.exists(key)
+      def exists(key)
         return @Variables.key?(key)
       end
       
@@ -140,4 +144,4 @@ module AutoEasy
   end
 end
 
-G_Variables ||= AutoEasy::Core::VariableRegister
+G_Variables ||= AutoEasy::Core::VariableRegister.instance

@@ -15,7 +15,7 @@ module AutoEasy
         if @current_capybara_driver != nil
           @current_capybara_driver.quit()
         end
-        @current_capybara_driver = G_DriverRegister.instance(browser)
+        @current_capybara_driver = G_DriverRegister.instanceDriver(browser)
         @current_driver = @current_capybara_driver.browser
         return @current_driver
       end

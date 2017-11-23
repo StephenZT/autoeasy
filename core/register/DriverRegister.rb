@@ -31,7 +31,7 @@ module AutoEasy
       end
       
       
-      def instance(name)
+      def instanceDriver(name)
         if not @registered_drivers.key?(name) then
           raise "Driver name: #{name} not registered."
         else

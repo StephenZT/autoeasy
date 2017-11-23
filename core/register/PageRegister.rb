@@ -4,15 +4,19 @@
 
 module AutoEasy
   module Core
-    module PageRegister
-      #Store page register, it could be page class or page definitions with JSON format
-      @registered_pages = Hash.new
-      #Store page instance
-      @page_instances = Hash.new
-      #Store page url if registered
-      @page_urls = Hash.new
+    class PageRegister
+      include Singleton
       
-      def self.registerPage(name, pagedef , opt={})
+      def initialize()
+        #Store page register, it could be page class or page definitions with JSON format
+        @registered_pages = Hash.new
+        #Store page instance
+        @page_instances = Hash.new
+        #Store page url if registered
+        @page_urls = Hash.new
+      end
+      
+      def registerPage(name, pagedef , opt={})
         if not @registered_pages.key?(name) then
           @registered_pages[name] = pagedef
           if opt != nil && opt.key?(:url)
@@ -23,7 +27,7 @@ module AutoEasy
         end
       end
       
-      def self.instance(name,opt={})
+      def instancePage(name,opt={})
         if @registered_pages.key?(name)
           #Do you want to create force new page if refresh = true 
           refresh = (opt != nil && opt.key?(:force_refresh) && opt[:force_refresh] == true)
@@ -46,7 +50,7 @@ module AutoEasy
         end
       end
       
-      def self.isRegistered(name)
+      def isRegistered(name)
         return @registered_pages.key?(name) 
       end
       
@@ -54,4 +58,4 @@ module AutoEasy
   end
 end
 
-G_PageRegister = AutoEasy::Core::PageRegister
+G_PageRegister = AutoEasy::Core::PageRegister.instance

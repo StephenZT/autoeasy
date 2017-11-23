@@ -3,14 +3,18 @@
 
 module AutoEasy
   module Core
-    module ProviderRegister
-      @providers = Hash.new
+    class ProviderRegister
+      include Singleton
       
-      def self.addProvider(name, provider)
+      def initialize()
+        @providers = Hash.new  
+      end
+ 
+      def addProvider(name, provider)
         @providers[name.downcase] = provider
       end
 
-      def self.getProvider(name)
+      def getProvider(name)
         value = @providers[name]
         return value if value != nil
       end
@@ -19,4 +23,4 @@ module AutoEasy
   end
 end
 
-G_ProviderRegister = AutoEasy::Core::ProviderRegister
+G_ProviderRegister = AutoEasy::Core::ProviderRegister.instance

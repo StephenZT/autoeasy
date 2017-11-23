@@ -11,8 +11,8 @@ module AutoEasy
       attr_reader :current_page
       
       def getPage(name, platform, opt={})
-        if AutoEasy::Core::PageRegister.isRegistered(name) then
-          page_new = AutoEasy::Core::PageRegister.instance(name, opt)
+        if G_PageRegister.isRegistered(name) then
+          page_new = G_PageRegister.instancePage(name, opt)
           page_new.switchToPlatform(platform)
           @current_page = page_new
           return page_new

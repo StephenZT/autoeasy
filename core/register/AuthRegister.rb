@@ -3,14 +3,15 @@
 #Store all authentications that can be used in rest/soap etc.
 module AutoEasy
   module Core
-    module AuthRegister
+    class AuthRegister
+      include Singleton
       @auth = Hash.new
 
-      def self.addAuth(name, authentication)
+      def addAuth(name, authentication)
         @auth[name.downcase] = authentication
       end
 
-      def self.getAuth(name)
+      def getAuth(name)
         value = @auth[name]
         return value if value != nil
       end
@@ -19,4 +20,4 @@ module AutoEasy
   end
 end
 
-G_AuthRegister = AutoEasy::Core::AuthRegister
+G_AuthRegister = AutoEasy::Core::AuthRegister.instance
