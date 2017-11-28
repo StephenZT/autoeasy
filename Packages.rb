@@ -37,3 +37,6 @@ require File.expand_path(File.dirname(__FILE__)) + "/Utils/RandomUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/AuthRegister.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ProviderRegister.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ServiceRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/WrapStepRegister.rb"
+
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Providers/BaseProvider.rb"

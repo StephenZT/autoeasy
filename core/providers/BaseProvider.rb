@@ -5,7 +5,7 @@
 module AutoEasy
   module Core
     class BaseProvider
-      def getData(opt={})
+      def getData(key)
         raise StandardError.new('Unimplemented Error')
       end
     end

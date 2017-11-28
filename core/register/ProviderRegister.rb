@@ -15,7 +15,7 @@ module AutoEasy
       end
 
       def getProvider(name)
-        value = @providers[name]
+        value = @providers[name.downcase]
         return value if value != nil
       end
       

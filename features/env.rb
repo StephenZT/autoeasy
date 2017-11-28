@@ -1,4 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + "/../Packages.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/../CucumberSteps.rb"
+
 
 G_ConfigHelper.conifg_enironment(["QA3","QA4"])
 G_ConfigHelper.config_databases("QA3","default",{:dataserver=>'servername',:database=>'dbname'})

@@ -11,6 +11,18 @@ module AutoEasy
       include Singleton
       #current settings
       attr_accessor :setting
+      
+      def initialize()
+        @setting = Hash.new if @setting == nil
+        @setting['environment'] =  G_Supports.environments[0]
+        @setting['platform'] = G_Supports.platforms[0]
+        @setting['browser'] = G_Supports.browsers[0]
+        @setting['device'] = G_Supports.devices[0]
+        @setting['loglevel'] = G_Supports.loglevels[0]
+        
+        #turn on/off ignore cucumber step switch, it might skip steps if meet certain condition
+        @setting['skip_step'] = false
+      end
        
       def setEnvironment(env)
         @setting['environment'] = env
@@ -64,20 +76,9 @@ module AutoEasy
         return @setting
       end
       
-      def setDefault()
-        #Set default settings
-        @setting = Hash.new if @setting == nil
-        @setting['environment'] =  G_Supports.environments[0]
-        @setting['platform'] = G_Supports.platforms[0]
-        @setting['browser'] = G_Supports.browsers[0]
-        @setting['device'] = G_Supports.devices[0]
-        @setting['loglevel'] = G_Supports.loglevels[0]
-      end
-      
     end
   end
 end
 
 G_Configuration ||= AutoEasy::Core::Config.instance
-G_Configuration.setDefault()
 
