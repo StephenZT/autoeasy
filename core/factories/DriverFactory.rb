@@ -28,10 +28,10 @@ module AutoEasy
       end
       
       def currentCapybaraDriver()
-        if :current_capybara_driver == nil
+        if @current_capybara_driver == nil
           getDriver("chrome")
         end
-        return :current_capybara_driver
+        return @current_capybara_driver
       end
     end
   end
