@@ -17,6 +17,7 @@ module AutoEasy
           @current_page = page_new
           return page_new
         else
+          raise "Page name :#{name} not registered"
           return nil
         end
       end
