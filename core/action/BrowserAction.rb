@@ -8,12 +8,14 @@ module AutoEasy
       #Store webdriver
       attr_reader :page
       attr_reader :driver
+      attr_reader :default_timeout
       
       def initialize(driver,opts={})
         if opts.key?(:page)
           @page = opts[:page]
         end
-        @driver = driver   
+        @driver = driver
+        @default_timeout = 120   
       end
       
       def wait_for_ready(timeout)
@@ -27,6 +29,7 @@ module AutoEasy
       
       def go_to(url)
         @driver.get(url)
+        wait_for_ready(@default_timeout)
       end
       
       def go_back()

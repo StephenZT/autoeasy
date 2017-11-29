@@ -9,12 +9,18 @@
 #When I visit "GD_OnlineActivation" page
 #End_DOC
 When(/^I visit "([^"]*)" page$/) do |pageName|
+  next if G_Configuration.getSkipStep()
+
+  pageName = VarUtil.toVaueIfIsVarialbe(pageName)
+
   get_page = G_PageFactory.getPage(pageName, G_ConfigHelper.get_platform(), {:force_refresh=>true})
   get_page.action().go_to(get_page.url)
-  get_page.action().wait_for_ready(10)
 end
 
 Then(/^I am on the page "([^"]*)"$/) do |pageName|
+  next if G_Configuration.getSkipStep()
+  pageName = VarUtil.toVaueIfIsVarialbe(pageName)
+
   get_page = G_PageFactory.getPage(pageName, G_ConfigHelper.get_platform())
   get_page.assert().assert_url("contains",get_page.url)
 end
@@ -30,7 +36,10 @@ end
 #When I visit "GD_OnlineActivation" page using Url "http://www.greendot.com/"
 #End_DOC
 When(/^I visit "([^"]*)" page using Url "([^"]*)"$/) do |pageName, url|
+  next if G_Configuration.getSkipStep()
 
+  get_page = G_PageFactory.getPage(pageName, G_ConfigHelper.get_platform(), {:force_refresh=>true})
+  get_page.action().go_to(url)
 end
 
 #Start_DOC

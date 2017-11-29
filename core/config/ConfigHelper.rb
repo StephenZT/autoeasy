@@ -57,6 +57,10 @@ module AutoEasy
         return G_Configuration.getConfig()["loglevel"]
       end
       
+      def self.get_skipstep
+        return G_Configuration.getConfig()["skip_step"]
+      end
+      
       def self.get_database(env,name)
         G_DBConfig.getConfig(env,name)
       end

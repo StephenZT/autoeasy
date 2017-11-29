@@ -1,8 +1,6 @@
 # encoding=utf-8
 # Author: Stephen Zhang
 # 
-require File.expand_path(File.dirname(__FILE__)) + "/../Assert.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/../../Utils/ColorUtil.rb"
 
 module AutoEasy
   module Core

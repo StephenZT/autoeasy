@@ -44,9 +44,15 @@ module AutoEasy
         @setting['loglevel'] = loglevel
       end
       
+      def setSkipStep(isSkip)
+        @setting['skip_step'] = isSkip
+      end
+      
+      
       def setConfig(key,value)
         @setting[key] = value
       end
+      
       
       def getEnvironment()
         return @setting['environment'] 
@@ -67,6 +73,11 @@ module AutoEasy
       def getLogLevel()
         return @setting['loglevel']
       end
+      
+      def getSkipStep()
+        return @setting['skip_step']
+      end
+      
       
       def setConfig(key,value)
         @setting[key] = value
