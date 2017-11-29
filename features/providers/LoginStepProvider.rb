@@ -16,9 +16,3 @@ G_StepProviderRegister.registerWrappedStep("Login",
   ]
 )
 
-G_StepProviderRegister.registerWrappedStep("Login_Test",
-  [
-    'Given I visit "<<0:page_name>>" page',
-    'When I am on the page "<<0:page_name>>"'
-  ]
-)
