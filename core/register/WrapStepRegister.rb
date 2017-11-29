@@ -23,7 +23,7 @@ module AutoEasy
       def getWrappedStep(name, providerName)
         raise "Wrapped name #{name} does not registered." if !@registered_steps.key?(name.downcase)
         raise "Provider name #{providerName} does not registered." if G_ProviderRegister.getProvider(providerName) == nil
-        data = G_ProviderRegister.getProvider(providerName)
+        data = G_ProviderRegister.instanceProvider(providerName)
         
         steps = @registered_steps[name.downcase]
         real_steps = ""
