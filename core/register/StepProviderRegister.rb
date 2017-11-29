@@ -6,7 +6,7 @@ require 'singleton'
 
 module AutoEasy
   module Core
-    class WrapStepRegister
+    class StepProviderRegister
       include Singleton
       
       def initialize()
@@ -22,10 +22,16 @@ module AutoEasy
       
       def getWrappedStep(name, providerName)
         raise "Wrapped name #{name} does not registered." if !@registered_steps.key?(name.downcase)
-        raise "Provider name #{providerName} does not registered." if G_ProviderRegister.getProvider(providerName) == nil
-        data = G_ProviderRegister.instanceProvider(providerName)
+        raise "Provider name #{providerName} does not registered." if G_DataProviderRegister.getProvider(providerName) == nil
         
-        steps = @registered_steps[name.downcase]
+        data = G_DataProviderRegister.instanceProvider(providerName)
+        
+        if @registered_steps[name.downcase].kind_of?(Array)
+          steps = @registered_steps[name.downcase]
+        else
+          steps = Object::const_get(@registered_steps[name.downcase]).new().getSteps() 
+        end
+        
         real_steps = ""
         
         steps.each do |step|
@@ -44,7 +50,7 @@ module AutoEasy
   end
 end
 
-G_WrapStepRegister ||= AutoEasy::Core::WrapStepRegister.instance
+G_StepProviderRegister ||= AutoEasy::Core::StepProviderRegister.instance
 
 
 

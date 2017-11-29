@@ -4,7 +4,7 @@
 
 module AutoEasy
   module Core
-    class BaseProvider
+    class DataProvider
       attr_reader :data
       
       def initialize(opts={})
@@ -52,7 +52,7 @@ module AutoEasy
   end
 end
 
-# provider = AutoEasy::Core::BaseProvider.new
+# provider = AutoEasy::Core::DataProvider.new
 # provider.addData("test",'abcd')
 # provider.addData("0:1:a:b",'xxxx')
 # provider.addData("0:1:c",'ddd')

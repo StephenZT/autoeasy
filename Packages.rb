@@ -34,9 +34,11 @@ require File.expand_path(File.dirname(__FILE__)) + "/Utils/ColorUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/DateUtil.rb"
 require File.expand_path(File.dirname(__FILE__)) + "/Utils/RandomUtil.rb"
 
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/AuthRegister.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ProviderRegister.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ServiceRegister.rb"
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/WrapStepRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Providers/DataProvider.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Providers/StepProvider.rb"
 
-require File.expand_path(File.dirname(__FILE__)) + "/Core/Providers/BaseProvider.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/AuthRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/DataProviderRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/ServiceRegister.rb"
+require File.expand_path(File.dirname(__FILE__)) + "/Core/Register/StepProviderRegister.rb"
+

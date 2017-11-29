@@ -3,7 +3,7 @@
 
 module AutoEasy
   module Core
-    class ProviderRegister
+    class DataProviderRegister
       include Singleton
       
       def initialize()
@@ -23,7 +23,7 @@ module AutoEasy
       def instanceProvider(name)
         if @providers.key?(name.downcase)
           if @providers[name.downcase].is_a?(Hash) then
-            pageObj = Object::const_get('AutoEasy::Core::BaseProvider').new(@providers[name.downcase])
+            pageObj = Object::const_get('AutoEasy::Core::DataProvider').new(@providers[name.downcase])
             return pageObj
           else
             pageObj = Object::const_get(@providers[name.downcase]).new()
@@ -42,4 +42,4 @@ module AutoEasy
   end
 end
 
-G_ProviderRegister = AutoEasy::Core::ProviderRegister.instance
+G_DataProviderRegister = AutoEasy::Core::DataProviderRegister.instance
