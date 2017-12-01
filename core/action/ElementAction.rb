@@ -360,23 +360,39 @@ module AutoEasy
       end
       
       def wait_for_visible(time)
-         wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
-         wait.until { @element.displayed? }       
+         begin
+            wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
+            wait.until { @element.displayed? }   
+         rescue
+            puts "Wait visible timeout without raise error"
+        end     
       end
 
       def wait_for_invisible(time)
-         wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
-         wait.until { !@element.displayed? }       
+         begin
+            wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
+            wait.until { !@element.displayed? }    
+         rescue
+            puts "Wait invisible timeout without raise error"
+        end    
       end
       
       def wait_for_css_value(time, css_tag, value)
-         wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
-         wait.until { @element.css_value(css_tag) == value }       
+         begin
+            wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
+            wait.until { @element.css_value(css_tag) == value }     
+         rescue
+            puts "Wait css value #{css_tag} = #{value} timeout without raise error"
+        end    
       end
       
       def wait_for_attr_value(time, attr_tag, value)
-         wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
-         wait.until { @element.attribute(attr_tag) == value }       
+         begin
+            wait = Selenium::WebDriver::Wait.new(:timeout=> time.to_i)    
+            wait.until { @element.attribute(attr_tag) == value }  
+         rescue
+            puts "Wait attribute value #{css_tag} = #{value} timeout without raise error"
+        end     
       end
       
     end

@@ -10,7 +10,10 @@
 #When I set the attribute "style" of element "FirstName_Input" to "height:20px"
 #End_DOC
 When(/^I set the attribute "([^"]*)" of element "([^"]*)" to "([^"]*)"$/) do |attribute, elementName, value|
-  # doaction("setAttribute", elementName, :attrname => attribute, :value => value)
+  (puts 'Ignore this step: skip step marked.'; next) if G_Configuration.getSkipStep()
+  do_action = G_PageFactory.getCurrentPage().getElement(elementName).action()
+  value = VarUtil.toVaueIfIsVarialbe(value)
+  do_action.set_attribute(attribute,value)
 end
 
 #Start_DOC
@@ -23,11 +26,16 @@ end
 #type:: mobile, rwd, desktop or none
 #Returns::
 #Example::
-#When I update element "test" with selector ".style" and validation type css for mobile"
+#When I update element "test" with selector ".style" and validation type "css" for "mobile""
 #End_DOC
-When(/^I update element "([^"]*)" with selector "([^"]*)" and validation type (xpath|css) for (mobile|desktop|rwd|none)$/) do |element, selector, validator, type|
-  # element = Pages.getPage().getElement(element)
-  # element.setSelector(selector, validator, type)
+When(/^I update element "([^"]*)" with selector "([^"]*)" and validation type "([^"]*)" for "([^"]*)"$/) do |element, selector, location, platform|
+  (puts 'Ignore this step: skip step marked.'; next) if G_Configuration.getSkipStep()
+  do_element = G_PageFactory.getCurrentPage().getElement(elementName)
+  selector = VarUtil.toVaueIfIsVarialbe(selector)
+  platform = VarUtil.toVaueIfIsVarialbe(platform)
+  location = VarUtil.toVaueIfIsVarialbe(location)
+  
+  do_element.addMeta(platform, selector.to_sym, location)
 end
 
 #Start_DOC
@@ -41,4 +49,30 @@ end
 When(/^Verify there is no error in log pool$/) do
   (puts 'Ignore this step: skip step marked.'; next) if G_Configuration.getSkipStep()
   LoggerTrace.assert_no_error_in_log()
+end
+
+#Start_DOC
+#Author::
+#Desc:: Get local IP Address and set as variable
+#params::
+#ipaddress:: Variable Name
+#Returns:: Local Ip Address Set in variable
+#Example::
+#When I get my local IP Address and set as variable "ipaddress"
+#End_DOC
+When(/^I get my local IP Address and set as variable "([^"]*)"$/) do |ipaddress|
+  (puts 'Ignore this step: skip step marked.'; next) if G_Configuration.getSkipStep()
+
+  orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
+
+  if Socket.do_not_reverse_lookup = orig
+    #METHOD (uses Google's address)
+    UDPSocket.open do |s|
+      s.connect '64.233.187.99', 1
+      G_Variables.setVariable(ipaddress,s.addr.last.to_s)
+    end
+  else
+    raise "turn off reverse DNS resolution temporarily is not successful"
+  end
+
 end

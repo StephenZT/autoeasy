@@ -20,30 +20,7 @@ When(/^I (find|ignore) hidden elements$/) do |action|
   end
 end
 
-#Start_DOC
-#Author::
-#Desc:: Get local IP Address and set as variable
-#params::
-#ipaddress:: Variable Name
-#Returns:: Local Ip Address Set in variable
-#Example::
-#When I get my local IP Address and set as variable "ipaddress"
-#End_DOC
-When(/^I get my local IP Address and set as variable "([^"]*)"$/) do |ipaddress|
-  # (puts 'Skipped, invalid step marked.'; next) if !(Util.isStepMarkedAsValid())
-# 
-  # orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
-# 
-  # if Socket.do_not_reverse_lookup = orig
-    # UDPSocket.open do |s|
-      # s.connect '64.233.187.99', 1
-      # Variables.setVariable(ipaddress,s.addr.last.to_s)
-    # end
-  # else
-    # raise "turn off reverse DNS resolution temporarily is not successful"
-  # end
-  # LoggerTrace.Log("myip is: " + Variables.getVariable(ipaddress), LogLevel::Debug)
-end
+
 
 #Start_DOC
 #Author::
@@ -649,6 +626,7 @@ end
 #Returns:: True or False
 #Example::
 #When I verify element is focused on "FirstName_Input"
+
 #End_DOC
 When(/^I verify element is focused on "([^"]*)"$/) do |elementName|
   (puts 'Ignore this step: skip step marked.'; next) if G_Configuration.getSkipStep()

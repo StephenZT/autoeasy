@@ -75,6 +75,7 @@ module AutoEasy
           raise "The given #{platform} platform not support."
         end
       end
+      
       #Get currenct selector (find element required this)
       def getSelector()
         if @meta_data[@platform].key?(:id)
