@@ -140,6 +140,10 @@ module AutoEasy
         return @Variables.key?(key)
       end
       
+      def assert(opts={})
+        return AutoEasy::Core::Assert.new(opts)
+      end
+      
     end
   end
 end

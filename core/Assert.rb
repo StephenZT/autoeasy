@@ -159,7 +159,7 @@ module AutoEasy
     
     		begin
   		    case(@operation)
-  				when "equals", "=", "=="
+  				when "is", "equals", "=", "=="
   					@operation = "=="
   					comparison = leftValue == rightValue
   				when "doesnotequals", "!="

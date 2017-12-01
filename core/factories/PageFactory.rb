@@ -22,6 +22,14 @@ module AutoEasy
         end
       end
       
+      def setCurrentPage(page)
+        @current_page = page
+      end
+      
+      def getCurrentPage()
+        return @current_page
+      end
+      
     end
   end
 end

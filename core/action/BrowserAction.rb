@@ -20,7 +20,11 @@ module AutoEasy
       
       def wait_for_ready(timeout)
         wait = Selenium::WebDriver::Wait.new(:timeout=>timeout.to_i)          
-        wait.until { @driver.execute_script("return document.readyState").to_s =="complete" }  
+        wait.until { evaluate_script("return document.readyState").to_s =="complete" }  
+      end
+      
+      def evaluate_script(script)
+        @driver.execute_script(script)
       end
       
       def visit()
@@ -45,6 +49,10 @@ module AutoEasy
         wait_for_ready(timeout)
       end
       
+      def title()
+        @driver.title
+      end
+      
       def reset_browser(timeout)
         if @driver.browser.downcase == "firefox" || @driver.browser.downcase == "chrome"         
            @driver.execute_script("function deleteAllCookies() {var cookies = document.cookie.split(';'); for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf('=');var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';}};deleteAllCookies();")
@@ -53,11 +61,12 @@ module AutoEasy
         @driver.manage.delete_all_cookies()   
       end
       
-      def resize_to()
-        
-      end
-      def maximize_window(width, height)
+      def resize_to(width, height)
         @driver.manage.window.resize_to(width, height)
+      end
+      
+      def maximize_window()
+        @driver.manage.window.maximize
       end
       
       def open_new_window()
@@ -67,6 +76,14 @@ module AutoEasy
       
       def get_url()
         @driver.current_url
+      end
+      
+      def get_page_source()
+        return @driver.page_source
+      end
+      
+      def switch_to_first_window()
+        @driver.switch_to.window(@driver.window_handles.first)
       end
       
       def switch_to_last_window()
@@ -81,6 +98,29 @@ module AutoEasy
       def switch_to_default_content()
         @driver.switch_to.default_content
       end
+      
+      def switch_to_window(title)
+        @driver.window_handles.each do |handle|
+          @driver.switch_to.window(handle)
+          sleep(0.5)
+          break if title() == title
+        end
+      end 
+      
+      def close_and_switchback_window()
+        if(@driver.window_handles.first != @driver.window_handles.last)
+          switch_to_last_window()
+          @driver.execute_script( "window.close()" )
+        end
+      end
+      
+      def close_windows_except_main()
+        while(@driver.window_handles.first != @driver.window_handles.last)
+            switch_to_last_window()
+            @driver.execute_script( "window.close()" )
+        end
+      end
+      
       
       def alert_accept()
         @driver.switch_to.alert.accept
@@ -98,6 +138,10 @@ module AutoEasy
         return @driver.switch_to.alert.text
       end
       
+      def sendkey(value)
+        @driver.send_keys(value).perform
+      end
+      
       def sendkey_to_alert(value)
         if @driver.browser.downcase == "chrome"
           wsh = WIN32OLE.new("WScript.Shell")
@@ -106,6 +150,20 @@ module AutoEasy
           @driver.switch_to.alert.send_keys(value)
         end
       end
+      
+      def wait_for_url(timeout)
+        begin
+          wait = Selenium::WebDriver::Wait.new(:timeout=>timeout.to_i)          
+          wait.until { get_url().downcase.include? @page.url.downcase }
+        rescue
+          puts "Wait url :#{@page.url} timeout without raise error"
+        end  
+      end
+      
+      def save_screenshot(path)
+        @driver.save_screenshot(path)
+      end
+      
     end
   end
 end
