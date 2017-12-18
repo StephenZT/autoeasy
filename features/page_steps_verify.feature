@@ -30,5 +30,5 @@ Then I am on the page "w3c_page"
 And I click "tag_input"
 And I click "try_it"
 And I switch to the most recent window
-And I close last window and switch back to window
 And I switch to the main window
+And I close last window and switch back to window
